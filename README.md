@@ -1,4 +1,5 @@
-# face.evoLVe: High-Performance Face Recognition Library based on PyTorch
+# FaceSeries: High-Performance Face Recognition Library based on PyTorch
+* I will develop it for production and research
 * Evolve to be more comprehensive, effective and efficient for face related analytics \& applications! ([WeChat News](https://mp.weixin.qq.com/s/V8VoyMqVvjblH358ozcWEg))
 * About the name:
   * "face" means this repo is dedicated for face related analytics \& applications.
