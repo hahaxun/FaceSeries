@@ -8,11 +8,12 @@ from loss.focal import FocalLoss
 from config import cfg
 from detector import detect_faces
 from align.align_trans import get_reference_facial_points, warp_and_crop_face
+import numpy as np
 import torch.nn as nn
 import torch
 
 class Detection(nn.Module):
-    def __init__(self. device):
+    def __init__(self, device):
         self.device = device
         self.detector = detect_faces
     
@@ -58,11 +59,10 @@ class MetricHead(nn.Module):
         
     
 class FaceEncoer(nn.Module):
-    def __init__(self, device, crop_size = 112):
+    def __init__(self, device, crop_size = 112, scale = 1):
         #default format is N X H X W X D
         super().__init__("FaceEncoder")
         self.detection = Detection(device)
-        self.align = align
         self.embedding = Embedding(device)
         self.crop_size = crop_size
         self.scale = crop_size / 112.
@@ -80,7 +80,7 @@ class FaceEncoer(nn.Module):
         #1.add face detection
         bounding_boxes, landmarks = detect_faces(image)
         #2.add face align
-        wrapedfaces = warpface(landmarks,image)
+        wrapedfaces = self.warpface(landmarks,image)
         #3.compute face embedding
         return self.embedding(wrapedfaces)
 
