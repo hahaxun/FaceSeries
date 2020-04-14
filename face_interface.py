@@ -57,7 +57,7 @@ class MetricHead(nn.Module):
 
         
     
-class FaceEncoer(Encoder):
+class FaceEncoer(nn.Module):
     def __init__(self, device, crop_size = 112):
         #default format is N X H X W X D
         super().__init__("FaceEncoder")
