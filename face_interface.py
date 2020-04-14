@@ -12,7 +12,7 @@ import torch.nn as nn
 import torch
 
 class Detection(nn.Module):
-    def __init__(self. device):
+    def __init__(self, device):
         self.device = device
         self.detector = detect_faces
     
