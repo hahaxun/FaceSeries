@@ -92,8 +92,6 @@ class FaceEncoer(nn.Module):
 
     def build(self, image):
         #1.add face detection
-        print("fuck")
-        print(image.size)
         bounding_boxes, landmarks = detect_faces(image)
         #2.add face align
         wrapedfaces = self.warpface(landmarks,image)
