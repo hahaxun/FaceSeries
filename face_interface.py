@@ -93,12 +93,11 @@ class FaceEncoer(nn.Module):
     def build(self, image):
         #1.add face detection
         bounding_boxes, landmarks = detect_faces(image)
+        if len(bounding_boxes) == 0:
+            return None
         #2.add face align
         wrapedfaces = self.warpface(landmarks,image)
         #3.compute face embedding
-        if len(wrapedfaces) == 0:
-            return None
-
         return self.embedding(wrapedfaces)
 
 
